@@ -16,7 +16,7 @@ Plain HTML/CSS/JS, no build step, no framework. Keep it that way.
 - Landing page (`index.html`) list entries follow the same id + anchor pattern as post subsections.
 - Each landing-page list entry also gets a one-line `<p class="post-summary">` under the meta line, summarizing the post in the author's own words.
 - Dense facts/numbers within a subsection should be broken into bullet lists rather than left as long unbroken paragraphs - easier to scan, less dead whitespace.
-- Any photo should be wrapped in a link to its own full-size image (`target="_blank"`) so it's clickable to view large.
+- Every `.post-photo` is clickable - `script.js` opens it in an in-page lightbox overlay (close via the X, clicking the background, or Escape) rather than navigating away. No per-photo markup needed for this; the shared script handles it automatically for any element with the `.post-photo` class, as long as `script.js` is included on the page.
 
 ## Content rules
 
