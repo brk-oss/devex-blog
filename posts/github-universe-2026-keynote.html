@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Debrief from the field - GitHub Universe 2026 | DevEx for the AI age</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="../script.js" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -23,7 +24,9 @@
 
       <p>Two days at Fort Mason for GitHub Universe 2026. Three things worth writing down: the opening keynote's announcements and scale numbers, a breakout on GitHub's own infrastructure rebuild, and a few products from the expo floor worth a second look. Quick shoutout before any of that, though: this year's <a href="https://github.com/badger/home">conference badge</a> is a fully hackable little device with its own open-source repo, built on the Pimoroni Tufty 2350 - firmware, apps, hardware schematics, all of it, right there to fork and flash your own build. 🛠️ A conference badge that's also a dev environment is just a genuinely great idea.</p>
 
-      <h2 id="keynote">1. Opening keynote <a class="anchor" href="#keynote" aria-label="Direct link to this section">#</a></h2>
+      <h2 id="keynote">1. Opening keynote <a class="anchor" href="#keynote" aria-label="Copy direct link to this section">🔗</a></h2>
+
+      <img class="post-photo" src="images/jay-parikh-keynote.jpg" alt="Jay Parikh presenting the opening keynote at GitHub Universe 2026, with a slide behind him showing GitHub Actions job growth from 2024 to 2026">
 
       <p><a href="https://www.linkedin.com/in/jayparikh/">Jay Parikh</a> opened GitHub Universe 2026 by throwing out some genuinely wild numbers: GitHub's now past 225 million developers worldwide, picking up a new one every single second for the second year running. Commits hit 34.3 billion and pull requests cracked 1.3 billion in 2026, open source repos are past 566 million (up 30%+ year over year), and the growth curve itself is bending upward - not just more people typing more code, but agents piling onto the platform too.</p>
 
@@ -33,7 +36,9 @@
 
       <p>Full talk (42 min): <a href="https://www.youtube.com/watch?v=AArI948SDz8">Opening keynote: building the next era of software at GitHub Universe 2026</a>.</p>
 
-      <h2 id="brian-celenza">2. Scaling GitHub's infrastructure for how developers build today - <a href="https://www.linkedin.com/in/bcelenza/">Brian Celenza</a> <a class="anchor" href="#brian-celenza" aria-label="Direct link to this section">#</a></h2>
+      <h2 id="brian-celenza">2. Scaling GitHub's infrastructure for how developers build today - <a href="https://www.linkedin.com/in/bcelenza/">Brian Celenza</a> <a class="anchor" href="#brian-celenza" aria-label="Copy direct link to this section">🔗</a></h2>
+
+      <img class="post-photo" src="images/brian-celenza-talk.jpg" alt="Brian Celenza presenting on GitHub's infrastructure rebuild at GitHub Universe 2026">
 
       <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. The old system (GitHub calls it Spokes) replicates every repo across a handful of copies - sometimes way more than a handful, Brian mentioned repos running with 15-21 replicas - and every single push has to get a quorum of those replicas to agree before it's accepted. That's a hard ceiling: the slowest replica in the quorum sets the speed limit for everyone, and the same replicas also have to handle compaction and garbage collection on the side, so busy repos get worse on every axis at once. GitHub's own data showed reads and writes climbing together, and pushes amplify outward (a merge kicks off CI, CI spins up checkouts, agents refresh context off of that) - so the actual load a push generates is way bigger than the push itself.</p>
 
@@ -41,7 +46,7 @@
 
       <p>What's coming on top of this (also targeted for early next year, some pieces before end of this year): agent-specific Git APIs - partial/sparse checkouts so an agent doesn't have to clone a whole repo to touch three files, an atomic commit API so it can push without checking anything out first, and event streams so agents can subscribe to what's changing on a repo instead of polling it. That's the part that actually matters for scalability going forward: GitHub isn't just scaling the thing agents already do (clone, edit, push), it's trying to remove the parts of that workflow that only exist because Git assumed a human with a full local clone, not a fleet of agents hitting the API. Combined with the keynote's framing and the fact that <a href="https://cursor.com/origin">Cursor</a> and <a href="https://www.anthropic.com/engineering/redesigning-source-control">Anthropic</a> are independently reaching the same conclusion (Git-as-is doesn't hold up at agent-driven merge volume, so you either rebuild under it like GitHub is or replace it outright like Anthropic did with its in-house Scion/Antique stack) - this looks like a real, already-shipping response to a real problem, not a slide. Very promising.</p>
 
-      <h2 id="products">3. Products worth a look from the expo floor <a class="anchor" href="#products" aria-label="Direct link to this section">#</a></h2>
+      <h2 id="products">3. Products worth a look from the expo floor <a class="anchor" href="#products" aria-label="Copy direct link to this section">🔗</a></h2>
 
       <p>A few things from the expo floor worth keeping an eye on. More to come as I dig in.</p>
 
