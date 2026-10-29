@@ -51,7 +51,7 @@
         <li>The one I think lands hardest for us: <a href="https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot">GitHub Enterprise customers now get every Copilot feature bundled in</a>, no separate subscription, just pay for the AI credits you actually burn</li>
       </ul>
 
-      <p>The back half was all about infrastructure trying to catch up to that growth, and Jay was pretty candid it had been a rough year on that front:</p>
+      <p>The back half was all about infrastructure trying to catch up to that growth, and Jay didn't sugarcoat it - it had been a rough year on that front:</p>
 
       <ul>
         <li>A <a href="https://www.theregister.com/a/5302148">rebuilt Git architecture</a> - storage decoupled from compute, locking down to the branch instead of the whole repo, backed by Azure Blob storage - hit 7,200 writes/sec on one repo in testing (180x their old ceiling), rolling out to everyone early next year</li>
@@ -88,7 +88,7 @@
         <li>Compaction and garbage collection got pulled out entirely into their own independent worker pool, continuously tidying Blob storage in the background instead of fighting the replicas serving live traffic</li>
       </ul>
 
-      <p>They've tested this to 7,200 writes/sec on one repo, candidly admitted they don't actually know who needs that yet, and are building the headroom anyway because, in Brian's words, they don't know where they are on the growth curve and doubt it's leveling off anytime soon.</p>
+      <p>They've tested this to 7,200 writes/sec on one repo, flat-out admitted they don't actually know who needs that yet, and are building the headroom anyway because, in Brian's words, they don't know where they are on the growth curve and doubt it's leveling off anytime soon.</p>
 
       <p>What's coming on top of this (also targeted for early next year, some pieces before end of this year) - agent-specific Git APIs:</p>
 
