@@ -67,7 +67,7 @@
 
       <img class="post-photo" src="images/brian-celenza-talk.jpg" alt="Brian Celenza presenting on GitHub's infrastructure rebuild at GitHub Universe 2026">
 
-      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. Correction to get right: <a href="https://github.blog/engineering/stretching-spokes">Spokes</a> itself isn't going anywhere - it's GitHub's existing layer for intelligent request routing, load balancing, and scheduling workload placement across thousands of machines, and it keeps doing exactly that in the new design too. What's actually hitting real limits is the replication and locking scheme underneath it:</p>
+      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. <a href="https://github.blog/engineering/stretching-spokes">Spokes</a>, GitHub's existing layer for intelligent request routing, load balancing, and scheduling workload placement across thousands of machines, isn't going anywhere - it keeps doing exactly that in the new design too. What's actually hitting real limits is the replication and locking scheme underneath it:</p>
 
       <ul>
         <li>Every repo replicates across a handful of copies - busy repos run 15-21 replicas - and every push needs a quorum of them to agree before it's accepted</li>
