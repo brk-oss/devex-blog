@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Debrief from the field - GitHub Universe 2026 | DevEx for the AI age</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <script src="../script.js" defer></script>
 </head>
@@ -24,30 +27,77 @@
 
       <p>Two days at Fort Mason for GitHub Universe 2026. Three things worth writing down: the opening keynote's announcements and scale numbers, a breakout on GitHub's own infrastructure rebuild, and a few products from the expo floor worth a second look. Quick shoutout before any of that, though: this year's <a href="https://github.com/badger/home">conference badge</a> is a fully hackable little device with its own open-source repo, built on the Pimoroni Tufty 2350 - firmware, apps, hardware schematics, all of it, right there to fork and flash your own build. 🛠️ A conference badge that's also a dev environment is just a genuinely great idea.</p>
 
-      <img class="post-photo post-photo-small post-photo-tilt" src="images/badge.jpg" alt="The GitHub Universe 2026 hackable badge, displaying a profile card and a 'Couldn't connect to WiFi' message">
+      <a href="images/badge.jpg" target="_blank"><img class="post-photo post-photo-small post-photo-tilt" src="images/badge.jpg" alt="The GitHub Universe 2026 hackable badge, displaying a profile card and a 'Couldn't connect to WiFi' message"></a>
       <p class="photo-caption">Unfortunately the venue wifi skipped 2.4GHz entirely 🫠, so flashing this thing with something more interesting is going to have to wait until I'm home. (Yes, <a href="https://micropython.org">MicroPython</a> rules.)</p>
 
       <h2 id="keynote">1. Opening keynote <a class="anchor" href="#keynote" aria-label="Copy direct link to this section">🔗</a></h2>
 
-      <img class="post-photo" src="images/jay-parikh-keynote.jpg" alt="Jay Parikh presenting the opening keynote at GitHub Universe 2026, with a slide behind him showing GitHub Actions job growth from 2024 to 2026">
+      <a href="images/jay-parikh-keynote.jpg" target="_blank"><img class="post-photo" src="images/jay-parikh-keynote.jpg" alt="Jay Parikh presenting the opening keynote at GitHub Universe 2026, with a slide behind him showing GitHub Actions job growth from 2024 to 2026"></a>
 
-      <p><a href="https://www.linkedin.com/in/jayparikh/">Jay Parikh</a> opened GitHub Universe 2026 by throwing out some genuinely wild numbers: GitHub's now past 225 million developers worldwide, picking up a new one every single second for the second year running. Commits hit 34.3 billion and pull requests cracked 1.3 billion in 2026, open source repos are past 566 million (up 30%+ year over year), and the growth curve itself is bending upward - not just more people typing more code, but agents piling onto the platform too.</p>
+      <p><a href="https://www.linkedin.com/in/jayparikh/">Jay Parikh</a> opened GitHub Universe 2026 with some genuinely wild numbers, not just more people typing more code but agents piling onto the platform too:</p>
 
-      <p>On the announcements side, a few actually matter: Copilot Projects is now generally available to everyone, letting you point Copilot at a goal across several repos and have it spin up however many agents it needs on its own (no standalone announcement page found yet for this one - it's folded into the <a href="https://github.blog/changelog/2026-10-28-github-copilot-app-universe-releases">Copilot app's Universe release notes</a>). <a href="https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion">Copilot Fusion</a> - which routes a task to whichever model and execution pattern (single pass, cascade, or critique) actually fits - is getting a 30% usage discount through the end of November. Copilot Code Review picked up a deeper tier, <a href="https://github.blog/changelog/2026-10-28-copilot-code-review-merge-with-confidence-with-max-and-approvals">Code Review Max</a>. And the one I think lands hardest for us: <a href="https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot">GitHub Enterprise customers now get every Copilot feature bundled in</a>, no separate subscription, you just pay for the AI credits you actually burn.</p>
+      <ul>
+        <li>225M+ developers worldwide, picking up a new one every single second for the second year running</li>
+        <li>34.3B commits, 1.3B pull requests in 2026</li>
+        <li>566M+ open source repos, up 30%+ year over year</li>
+      </ul>
 
-      <p>The back half of the talk was all about infrastructure trying to catch up to that growth, and Jay was pretty candid that it had been a rough year on that front. The headline is a <a href="https://www.theregister.com/a/5302148">rebuilt Git architecture</a> - storage decoupled from compute, locking down to the branch instead of the whole repo, backed by Azure Blob storage - that hit 7,200 writes/sec on one repo in testing (180x their old ceiling), rolling out to everyone early next year alongside the rest of their Azure multi-region migration. They also piled on raw capacity this year: 4 million CPU cores, 160 petabytes of storage, 50 terabytes/sec of network. Jay closed by saying he thinks everything ever built on GitHub so far might only be about 1% of what gets built in the next five years - which is the bet all of this infrastructure work is actually for.</p>
+      <p>Announcements that actually matter:</p>
+
+      <ul>
+        <li>Copilot Projects is now generally available to everyone - point it at a goal across several repos, it spins up however many agents it needs on its own (no standalone announcement page found yet - it's folded into the <a href="https://github.blog/changelog/2026-10-28-github-copilot-app-universe-releases">Copilot app's Universe release notes</a>)</li>
+        <li><a href="https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion">Copilot Fusion</a> - routes a task to whichever model and execution pattern (single pass, cascade, or critique) actually fits - is getting a 30% usage discount through the end of November</li>
+        <li>Copilot Code Review picked up a deeper tier, <a href="https://github.blog/changelog/2026-10-28-copilot-code-review-merge-with-confidence-with-max-and-approvals">Code Review Max</a></li>
+        <li>The one I think lands hardest for us: <a href="https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot">GitHub Enterprise customers now get every Copilot feature bundled in</a>, no separate subscription, just pay for the AI credits you actually burn</li>
+      </ul>
+
+      <p>The back half was all about infrastructure trying to catch up to that growth, and Jay was pretty candid it had been a rough year on that front:</p>
+
+      <ul>
+        <li>A <a href="https://www.theregister.com/a/5302148">rebuilt Git architecture</a> - storage decoupled from compute, locking down to the branch instead of the whole repo, backed by Azure Blob storage - hit 7,200 writes/sec on one repo in testing (180x their old ceiling), rolling out to everyone early next year</li>
+        <li>Raw capacity added this year: 4 million CPU cores, 160 petabytes of storage, 50 terabytes/sec of network</li>
+        <li>An Azure multi-region migration rolling out alongside the new Git architecture</li>
+      </ul>
+
+      <p>Jay closed by saying he thinks everything ever built on GitHub so far might only be about 1% of what gets built in the next five years - which is the bet all of this infrastructure work is actually for.</p>
 
       <p>Full talk (42 min): <a href="https://www.youtube.com/watch?v=AArI948SDz8">Opening keynote: building the next era of software at GitHub Universe 2026</a>.</p>
 
       <h2 id="brian-celenza">2. Scaling GitHub's infrastructure for how developers build today - <a href="https://www.linkedin.com/in/bcelenza/">Brian Celenza</a> <a class="anchor" href="#brian-celenza" aria-label="Copy direct link to this section">🔗</a></h2>
 
-      <img class="post-photo" src="images/brian-celenza-talk.jpg" alt="Brian Celenza presenting on GitHub's infrastructure rebuild at GitHub Universe 2026">
+      <a href="images/brian-celenza-talk.jpg" target="_blank"><img class="post-photo" src="images/brian-celenza-talk.jpg" alt="Brian Celenza presenting on GitHub's infrastructure rebuild at GitHub Universe 2026"></a>
 
-      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. The old system (GitHub calls it Spokes) replicates every repo across a handful of copies - sometimes way more than a handful, Brian mentioned repos running with 15-21 replicas - and every single push has to get a quorum of those replicas to agree before it's accepted. That's a hard ceiling: the slowest replica in the quorum sets the speed limit for everyone, and the same replicas also have to handle compaction and garbage collection on the side, so busy repos get worse on every axis at once. GitHub's own data showed reads and writes climbing together, and pushes amplify outward (a merge kicks off CI, CI spins up checkouts, agents refresh context off of that) - so the actual load a push generates is way bigger than the push itself.</p>
+      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. The old system (GitHub calls it Spokes) is hitting real limits:</p>
 
-      <p>The new design (private preview now, rolling out broadly early next year) throws out whole-repo locking entirely. It separates three jobs that used to live on the same replicas: disposable, cache-only "virtual replicas" that actually serve traffic; a small, purpose-built coordination service that does nothing but record which commit a branch currently points to (the only step in the whole pipeline that has to be strictly ordered); and Azure Blob Storage holding the actual object data, written once and never touched again. A push picks basically any replica at random, writes content straight to Blob storage with no coordination at all, and then does one tiny transaction to move the branch pointer forward. Reads check that same tiny pointer to know if they're current, then pull whatever they're missing straight from Blob storage. Compaction and garbage collection got pulled out entirely into their own independent worker pool that just continuously tidies Blob storage in the background - no more fighting the replicas that are also trying to serve live traffic. They've tested this to 7,200 writes/sec on one repo, candidly admitted they don't actually know who needs that yet, and are building the headroom anyway because, in Brian's words, they don't know where they are on the growth curve and doubt it's leveling off anytime soon.</p>
+      <ul>
+        <li>Every repo replicates across a handful of copies - busy repos run 15-21 replicas - and every push needs a quorum of them to agree before it's accepted</li>
+        <li>The slowest replica in the quorum sets the speed limit for everyone</li>
+        <li>The same replicas also handle compaction and garbage collection on the side, so busy repos get worse on every axis at once</li>
+        <li>Reads and writes climb together, and a push amplifies outward - a merge kicks off CI, CI spins up checkouts, agents refresh context off of that - so the real load a push generates is way bigger than the push itself</li>
+      </ul>
 
-      <p>What's coming on top of this (also targeted for early next year, some pieces before end of this year): agent-specific Git APIs - partial/sparse checkouts so an agent doesn't have to clone a whole repo to touch three files, an atomic commit API so it can push without checking anything out first, and event streams so agents can subscribe to what's changing on a repo instead of polling it. That's the part that actually matters for scalability going forward: GitHub isn't just scaling the thing agents already do (clone, edit, push), it's trying to remove the parts of that workflow that only exist because Git assumed a human with a full local clone, not a fleet of agents hitting the API. Combined with the keynote's framing and the fact that <a href="https://cursor.com/origin">Cursor</a> and <a href="https://www.anthropic.com/engineering/redesigning-source-control">Anthropic</a> are independently reaching the same conclusion (Git-as-is doesn't hold up at agent-driven merge volume, so you either rebuild under it like GitHub is or replace it outright like Anthropic did with its in-house Scion/Antique stack) - this looks like a real, already-shipping response to a real problem, not a slide. Very promising.</p>
+      <p>The new design (private preview now, rolling out broadly early next year) throws out whole-repo locking entirely:</p>
+
+      <ul>
+        <li>Disposable, cache-only "virtual replicas" that actually serve traffic</li>
+        <li>A small, purpose-built coordination service that only records which commit a branch currently points to - the sole step in the whole pipeline that has to be strictly ordered</li>
+        <li>Azure Blob Storage holding the actual object data, written once and never touched again</li>
+        <li>A push picks basically any replica at random, writes content straight to Blob storage with no coordination, then does one tiny transaction to move the branch pointer forward</li>
+        <li>Reads check that same tiny pointer to know if they're current, then pull whatever they're missing straight from Blob storage</li>
+        <li>Compaction and garbage collection got pulled out entirely into their own independent worker pool, continuously tidying Blob storage in the background instead of fighting the replicas serving live traffic</li>
+      </ul>
+
+      <p>They've tested this to 7,200 writes/sec on one repo, candidly admitted they don't actually know who needs that yet, and are building the headroom anyway because, in Brian's words, they don't know where they are on the growth curve and doubt it's leveling off anytime soon.</p>
+
+      <p>What's coming on top of this (also targeted for early next year, some pieces before end of this year) - agent-specific Git APIs:</p>
+
+      <ul>
+        <li>Partial/sparse checkouts, so an agent doesn't have to clone a whole repo to touch three files</li>
+        <li>An atomic commit API, so it can push without checking anything out first</li>
+        <li>Event streams, so agents can subscribe to what's changing on a repo instead of polling it</li>
+      </ul>
+
+      <p>That's the part that actually matters for scalability going forward: GitHub isn't just scaling the thing agents already do (clone, edit, push), it's trying to remove the parts of that workflow that only exist because Git assumed a human with a full local clone, not a fleet of agents hitting the API. Combined with the keynote's framing and the fact that <a href="https://cursor.com/origin">Cursor</a> and <a href="https://www.anthropic.com/engineering/redesigning-source-control">Anthropic</a> are independently reaching the same conclusion (Git-as-is doesn't hold up at agent-driven merge volume, so you either rebuild under it like GitHub is or replace it outright like Anthropic did with its in-house Scion/Antique stack) - this looks like a real, already-shipping response to a real problem, not a slide. Very promising.</p>
 
       <h2 id="products">3. Products worth a look from the expo floor <a class="anchor" href="#products" aria-label="Copy direct link to this section">🔗</a></h2>
 
