@@ -80,6 +80,7 @@
 
       <ul>
         <li>Disposable, cache-only "virtual replicas" that actually serve traffic</li>
+        <li>Locking moves from the whole repo down to the individual branch/ref - Git only actually requires that writes to one ref move forward monotonically, not that every write across the repo gets serialized. Two agents pushing to different branches now run fully in parallel with zero contention; only two writes racing for the exact same branch still have to wait on each other. That's most of the old contention gone, since the vast majority of pushes to a busy repo land on different branches, not the same one.</li>
         <li>A small, purpose-built coordination service that only records which commit a branch currently points to - the sole step in the whole pipeline that has to be strictly ordered</li>
         <li>Azure Blob Storage holding the actual object data, written once and never touched again</li>
         <li>A push picks basically any replica at random, writes content straight to Blob storage with no coordination, then does one tiny transaction to move the branch pointer forward</li>
@@ -103,7 +104,7 @@
 
       <p>A few things from the expo floor worth keeping an eye on. More to come as I dig in.</p>
 
-      <h3><img class="product-logo" src="https://www.google.com/s2/favicons?domain=stepsecurity.io&sz=32" alt=""> <a href="https://www.stepsecurity.io">StepSecurity</a></h3>
+      <h3 class="product-heading"><img class="product-logo" src="https://www.google.com/s2/favicons?domain=stepsecurity.io&sz=32" alt=""> <a href="https://www.stepsecurity.io">StepSecurity</a></h3>
       <ul>
         <li>CI/CD pipeline security for GitHub Actions</li>
         <li>Network egress control and runtime security for Actions runners</li>
@@ -111,13 +112,13 @@
         <li>Relevant to our own Actions hardening/SHA-pinning work</li>
       </ul>
 
-      <h3><img class="product-logo" src="https://www.google.com/s2/favicons?domain=tailscale.com&sz=32" alt=""> <a href="https://tailscale.com">Tailscale</a></h3>
+      <h3 class="product-heading"><img class="product-logo" src="https://www.google.com/s2/favicons?domain=tailscale.com&sz=32" alt=""> <a href="https://tailscale.com">Tailscale</a></h3>
       <ul>
         <li>Zero-config, identity-based mesh VPN, built on WireGuard</li>
         <li>Worth a look anywhere we're wiring up private network access between agents, runners, or internal services without standing up a full VPN concentrator</li>
       </ul>
 
-      <h3><img class="product-logo" src="https://www.google.com/s2/favicons?domain=gitprotect.io&sz=32" alt=""> <a href="https://gitprotect.io">GitProtect.io</a></h3>
+      <h3 class="product-heading"><img class="product-logo" src="https://www.google.com/s2/favicons?domain=gitprotect.io&sz=32" alt=""> <a href="https://gitprotect.io">GitProtect.io</a></h3>
       <ul>
         <li>Backup and disaster recovery specifically for GitHub - repos, metadata, LFS</li>
         <li>Point-in-time restore to the original account, a new org, another Git host, or local</li>
