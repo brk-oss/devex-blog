@@ -25,14 +25,14 @@
         <time datetime="2026-10-29T13:30:00-04:00">Oct 29, 2026</time>
       </p>
 
-      <p>Two days at Fort Mason for GitHub Universe 2026. Three things worth writing down: the opening keynote's announcements and scale numbers, a breakout on GitHub's own infrastructure rebuild, and a few products from the expo floor worth a second look. Quick shoutout before any of that, though: this year's <a href="https://github.com/badger/home">conference badge</a> is a fully hackable little device with its own open-source repo, built on the Pimoroni Tufty 2350 - firmware, apps, hardware schematics, all of it, right there to fork and flash your own build. 🛠️ A conference badge that's also a dev environment is just a genuinely great idea.</p>
+      <p>Two days at Fort Mason for <a href="https://githubuniverse.com/">GitHub Universe 2026</a>. Three things worth writing down: the opening keynote's announcements and scale numbers, a breakout on GitHub's own infrastructure rebuild, and a few products from the expo floor worth a second look. Quick shoutout before any of that, though: this year's <a href="https://github.com/badger/home">conference badge</a> is a fully hackable little device with its own open-source repo, built on the Pimoroni Tufty 2350 - firmware, apps, hardware schematics, all of it, right there to fork and flash your own build. 🛠️ A conference badge that's also a dev environment is just a genuinely great idea.</p>
 
-      <a href="images/badge.jpg" target="_blank"><img class="post-photo post-photo-small post-photo-tilt" src="images/badge.jpg" alt="The GitHub Universe 2026 hackable badge, displaying a profile card and a 'Couldn't connect to WiFi' message"></a>
+      <img class="post-photo post-photo-small post-photo-tilt" src="images/badge.jpg" alt="The GitHub Universe 2026 hackable badge, displaying a profile card and a 'Couldn't connect to WiFi' message">
       <p class="photo-caption">Unfortunately the venue wifi skipped 2.4GHz entirely 🫠, so flashing this thing with something more interesting is going to have to wait until I'm home. (Yes, <a href="https://micropython.org">MicroPython</a> rules.)</p>
 
       <h2 id="keynote">1. Opening keynote <a class="anchor" href="#keynote" aria-label="Copy direct link to this section">🔗</a></h2>
 
-      <a href="images/jay-parikh-keynote.jpg" target="_blank"><img class="post-photo" src="images/jay-parikh-keynote.jpg" alt="Jay Parikh presenting the opening keynote at GitHub Universe 2026, with a slide behind him showing GitHub Actions job growth from 2024 to 2026"></a>
+      <img class="post-photo" src="images/jay-parikh-keynote.jpg" alt="Jay Parikh presenting the opening keynote at GitHub Universe 2026, with a slide behind him showing GitHub Actions job growth from 2024 to 2026">
 
       <p><a href="https://www.linkedin.com/in/jayparikh/">Jay Parikh</a> opened GitHub Universe 2026 with some genuinely wild numbers, not just more people typing more code but agents piling onto the platform too:</p>
 
@@ -65,9 +65,9 @@
 
       <h2 id="brian-celenza">2. Scaling GitHub's infrastructure for how developers build today - <a href="https://www.linkedin.com/in/bcelenza/">Brian Celenza</a> <a class="anchor" href="#brian-celenza" aria-label="Copy direct link to this section">🔗</a></h2>
 
-      <a href="images/brian-celenza-talk.jpg" target="_blank"><img class="post-photo" src="images/brian-celenza-talk.jpg" alt="Brian Celenza presenting on GitHub's infrastructure rebuild at GitHub Universe 2026"></a>
+      <img class="post-photo" src="images/brian-celenza-talk.jpg" alt="Brian Celenza presenting on GitHub's infrastructure rebuild at GitHub Universe 2026">
 
-      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. The old system (GitHub calls it Spokes) is hitting real limits:</p>
+      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. Correction to get right: <a href="https://github.blog/engineering/stretching-spokes">Spokes</a> itself isn't going anywhere - it's GitHub's existing layer for intelligent request routing, load balancing, and scheduling workload placement across thousands of machines, and it keeps doing exactly that in the new design too. What's actually hitting real limits is the replication and locking scheme underneath it:</p>
 
       <ul>
         <li>Every repo replicates across a handful of copies - busy repos run 15-21 replicas - and every push needs a quorum of them to agree before it's accepted</li>
@@ -76,7 +76,7 @@
         <li>Reads and writes climb together, and a push amplifies outward - a merge kicks off CI, CI spins up checkouts, agents refresh context off of that - so the real load a push generates is way bigger than the push itself</li>
       </ul>
 
-      <p>The new design (private preview now, rolling out broadly early next year) throws out whole-repo locking entirely:</p>
+      <p>The new design (private preview now, rolling out broadly early next year) keeps Spokes doing routing and load balancing, but throws out quorum-based whole-repo locking underneath it entirely:</p>
 
       <ul>
         <li>Disposable, cache-only "virtual replicas" that actually serve traffic</li>
@@ -104,13 +104,25 @@
       <p>A few things from the expo floor worth keeping an eye on. More to come as I dig in.</p>
 
       <h3><a href="https://www.stepsecurity.io">StepSecurity</a></h3>
-      <p>CI/CD pipeline security for GitHub Actions - network egress control and runtime security for Actions runners, plus hardened drop-in replacements for risky third-party actions. Relevant to our own Actions hardening/SHA-pinning work.</p>
+      <ul>
+        <li>CI/CD pipeline security for GitHub Actions</li>
+        <li>Network egress control and runtime security for Actions runners</li>
+        <li>Hardened drop-in replacements for risky third-party actions</li>
+        <li>Relevant to our own Actions hardening/SHA-pinning work</li>
+      </ul>
 
       <h3><a href="https://tailscale.com">Tailscale</a></h3>
-      <p>Zero-config, identity-based mesh VPN (built on WireGuard). Worth a look anywhere we're wiring up private network access between agents, runners, or internal services without standing up a full VPN concentrator.</p>
+      <ul>
+        <li>Zero-config, identity-based mesh VPN, built on WireGuard</li>
+        <li>Worth a look anywhere we're wiring up private network access between agents, runners, or internal services without standing up a full VPN concentrator</li>
+      </ul>
 
       <h3><a href="https://gitprotect.io">GitProtect.io</a></h3>
-      <p>Backup and disaster recovery specifically for GitHub (repos, metadata, LFS) - point-in-time restore to the original account, a new org, another Git host, or local. Relevant given we don't currently have an explicit DR story for brk-tech-labs/brk-commons/brk-oss beyond GitHub's own durability.</p>
+      <ul>
+        <li>Backup and disaster recovery specifically for GitHub - repos, metadata, LFS</li>
+        <li>Point-in-time restore to the original account, a new org, another Git host, or local</li>
+        <li>Relevant given we don't currently have an explicit DR story for brk-tech-labs/brk-commons/brk-oss beyond GitHub's own durability</li>
+      </ul>
     </article>
 
     <footer class="site-footer">
