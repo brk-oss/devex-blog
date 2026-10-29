@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Debrief from the field - GitHub Universe 2026 | DevEx for the AI age</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="home-link" href="../index.html"><h1 class="site-title">DevEx for the AI age</h1></a>
+    </header>
+
+    <a class="back-link" href="../index.html">&larr; back to all posts</a>
+
+    <article class="post">
+      <h1>Debrief from the field - GitHub Universe 2026</h1>
+      <p class="post-meta">
+        Filed by <a href="https://github.com/thehcma">@thehcma</a> &middot;
+        <time datetime="2026-10-29T13:30:00-04:00">1:30 PM EDT, Oct 29, 2026</time>
+      </p>
+
+      <p>Jay Parikh opened GitHub Universe 2026 by throwing out some genuinely wild numbers: GitHub's now past 225 million developers worldwide, picking up a new one every single second for the second year running. Commits hit 34.3 billion and pull requests cracked 1.3 billion in 2026, open source repos are past 566 million (up 30%+ year over year), and the growth curve itself is bending upward - not just more people typing more code, but agents piling onto the platform too.</p>
+
+      <p>On the announcements side, a few actually matter: Copilot Projects is now generally available to everyone, letting you point Copilot at a goal across several repos and have it spin up however many agents it needs on its own. Copilot Fusion - which routes a task to whichever model and execution pattern (single pass, cascade, or critique) actually fits - is getting a 30% usage discount through the end of November. Copilot Code Review picked up a deeper tier, Code Review Max. And the one I think lands hardest for us: GitHub Enterprise customers now get every Copilot feature bundled in, no separate subscription, you just pay for the AI credits you actually burn.</p>
+
+      <p>The back half of the talk was all about infrastructure trying to catch up to that growth, and Jay was pretty candid that it had been a rough year on that front. The headline is a rebuilt Git architecture - storage decoupled from compute, locking down to the branch instead of the whole repo, backed by Azure Blob storage - that hit 7,200 writes/sec on one repo in testing (180x their old ceiling), rolling out to everyone early next year alongside the rest of their Azure multi-region migration. They also piled on raw capacity this year: 4 million CPU cores, 160 petabytes of storage, 50 terabytes/sec of network. Jay closed by saying he thinks everything ever built on GitHub so far might only be about 1% of what gets built in the next five years - which is the bet all of this infrastructure work is actually for.</p>
+
+      <p>Full talk (42 min): <a href="https://www.youtube.com/watch?v=AArI948SDz8">Opening keynote: building the next era of software at GitHub Universe 2026</a>.</p>
+    </article>
+
+    <footer class="site-footer">
+      <p><a href="../index.html">DevEx for the AI age</a></p>
+    </footer>
+  </div>
+</body>
+</html>
