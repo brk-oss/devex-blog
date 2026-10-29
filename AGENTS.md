@@ -14,6 +14,9 @@ Plain HTML/CSS/JS, no build step, no framework. Keep it that way.
 - Every post gets a `<p class="post-meta">` line: "Filed by `<a href="https://github.com/thehcma">@thehcma</a>`" plus a `<time>` with a real timestamp.
 - Every post, and every `<h2>` subsection inside a post, needs a stable `id` and a `<a class="anchor" href="#id" aria-label="Copy direct link to this ...">🔗</a>` right after it - see any existing post for the exact pattern. `script.js` makes clicking it copy the full URL to the clipboard while still updating the hash; don't reinvent this per-page, it's one shared script included on every page (`<script src="script.js" defer>` from the root, `../script.js` from `posts/`).
 - Landing page (`index.html`) list entries follow the same id + anchor pattern as post subsections.
+- Each landing-page list entry also gets a one-line `<p class="post-summary">` under the meta line, summarizing the post in the author's own words.
+- Dense facts/numbers within a subsection should be broken into bullet lists rather than left as long unbroken paragraphs - easier to scan, less dead whitespace.
+- Any photo should be wrapped in a link to its own full-size image (`target="_blank"`) so it's clickable to view large.
 
 ## Content rules
 
