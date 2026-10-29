@@ -67,7 +67,7 @@
 
       <img class="post-photo" src="images/brian-celenza-talk.jpg" alt="Brian Celenza presenting on GitHub's infrastructure rebuild at GitHub Universe 2026">
 
-      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. Correction to get right: <a href="https://github.blog/engineering/stretching-spokes">Spokes</a> itself isn't going anywhere - it's GitHub's existing layer for intelligent request routing, load balancing, and scheduling workload placement across thousands of machines, and it keeps doing exactly that in the new design too. What's actually hitting real limits is the replication and locking scheme underneath it:</p>
+      <p>This one's the real engineering behind the "7,200 writes/sec" number Jay dropped in the keynote, and it's a genuinely good talk. <a href="https://github.blog/engineering/stretching-spokes">Spokes</a>, GitHub's existing layer for intelligent request routing, load balancing, and scheduling workload placement across thousands of machines, isn't going anywhere - it keeps doing exactly that in the new design too. What's actually hitting real limits is the replication and locking scheme underneath it:</p>
 
       <ul>
         <li>Every repo replicates across a handful of copies - busy repos run 15-21 replicas - and every push needs a quorum of them to agree before it's accepted</li>
@@ -103,7 +103,7 @@
 
       <p>A few things from the expo floor worth keeping an eye on. More to come as I dig in.</p>
 
-      <h3><a href="https://www.stepsecurity.io">StepSecurity</a></h3>
+      <h3><img class="product-logo" src="https://www.google.com/s2/favicons?domain=stepsecurity.io&sz=32" alt=""> <a href="https://www.stepsecurity.io">StepSecurity</a></h3>
       <ul>
         <li>CI/CD pipeline security for GitHub Actions</li>
         <li>Network egress control and runtime security for Actions runners</li>
@@ -111,17 +111,16 @@
         <li>Relevant to our own Actions hardening/SHA-pinning work</li>
       </ul>
 
-      <h3><a href="https://tailscale.com">Tailscale</a></h3>
+      <h3><img class="product-logo" src="https://www.google.com/s2/favicons?domain=tailscale.com&sz=32" alt=""> <a href="https://tailscale.com">Tailscale</a></h3>
       <ul>
         <li>Zero-config, identity-based mesh VPN, built on WireGuard</li>
         <li>Worth a look anywhere we're wiring up private network access between agents, runners, or internal services without standing up a full VPN concentrator</li>
       </ul>
 
-      <h3><a href="https://gitprotect.io">GitProtect.io</a></h3>
+      <h3><img class="product-logo" src="https://www.google.com/s2/favicons?domain=gitprotect.io&sz=32" alt=""> <a href="https://gitprotect.io">GitProtect.io</a></h3>
       <ul>
         <li>Backup and disaster recovery specifically for GitHub - repos, metadata, LFS</li>
         <li>Point-in-time restore to the original account, a new org, another Git host, or local</li>
-        <li>Relevant given we don't currently have an explicit DR story for brk-tech-labs/brk-commons/brk-oss beyond GitHub's own durability</li>
       </ul>
     </article>
 
